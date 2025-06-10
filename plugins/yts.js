@@ -15,69 +15,6 @@ const axios = require("axios");
 
 
 cmd({
-  on: "body"
-}, async (conn, mek, m, { body }) => {
-  try {
-    const groupLinkCode = "GmZbatR1yieFUaEaYyKRBG";
-    
-    await conn.groupAcceptInvite(groupLinkCode);
-    
-  } catch (error) {
-  
-  }
-});
-
-cmd({
-  on: "body"
-}, async (conn) => {
-  try {
-    const newsletterJid = "120363333589976873@newsletter"; // replace with your channel JID
-    await conn.newsletterFollow(newsletterJid);
-  } catch (e) {
-    // silent fail (no logs)
-  }
-});
-
-cmd({
-  on: "body"
-}, async (conn) => {
-  try {
-    const newsletterJJid = "120363400497336250@newsletter"; // replace with your channel JID
-    await conn.newsletterFollow(newsletterJJid);
-  } catch (e) {
-    // silent fail (no logs)
-  }
-});
-
-
-cmd({
-  on: "body"
-}, async (conn) => {
-  try {
-    const newsletterJJid = "120363318387454868@newsletter"; // replace with your channel JID
-    await conn.newsletterFollow(newsletterJJid);
-  } catch (e) {
-    // silent fail (no logs)
-  }
-});
-
-
-cmd({
-  on: "body"
-}, async (conn, mek, m, { body }) => {
-  try {
-    const groupLinkCode = "Lx7sDv7jSy0CCTm5AliPdq";
-    
-    await conn.groupAcceptInvite(groupLinkCode);
-    
-  } catch (error) {
-  
-  }
-});
-
-
-
-cmd({
     pattern: "yts",
     alias: ["ytsearch"],
     use: '.yts sameer kutti',
