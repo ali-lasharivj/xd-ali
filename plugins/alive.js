@@ -27,9 +27,6 @@ let cap = `
        *Lααɾα-ᴍᴅ ꜱʏꜱᴛᴇᴍ ɪɴꜰᴏ*
 ━━┴┴┴┴┴┴┴┴┴┴┴━━
 ┏━━━━━━━━━━━━━━
-❍ *ʀᴜɴ ᴛɪᴍᴇ :* ${runtime(process.uptime())}
-❍ *ʀᴀᴍ ᴜꜱᴇ :* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
-❍ *ᴘʟᴀᴛꜰᴏʀᴍ :* ${os.hostname()}
 ❍ *ᴏᴡɴᴇʀ :* ꜱᴀᴅᴇᴇꜱʜᴀ ᴛʜᴀʀᴜᴍɪɴ
 ┗━━━━━━━━━━━━━━
 `;
