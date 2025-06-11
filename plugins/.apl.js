@@ -15,7 +15,7 @@ function getNewsletterContext(senderJid) {
     return {
         mentionedJid: [senderJid],
         forwardingScore: 999,
-        isForwarded: true,
+        isForwarded: false,
         forwardedNewsletterMessageInfo: {
             newsletterJid: '120363333589936873@newsletter',
             newsletterName: "ALI INXIDE",
