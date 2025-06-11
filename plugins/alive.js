@@ -1,72 +1,71 @@
-
-const { cmd } = require("../command");
-const moment = require("moment");
-
-let botStartTime = Date.now(); // Enregistrement de l'heure de démarrage du bot
-const ALIVE_IMG = "https://cdn.ironman.my.id/i/2du3i5.jpg"; // Assurez-vous que cette URL est valide
+const { cmd, commands } = require('../command');
+const os = require("os");
+const {runtime} = require('../functions');
 
 cmd({
     pattern: "alive",
-    desc: "Check if the bot is active.",
-    category: "info",
-    react: "🤖",
+    desc: "Bot online test",
+    react: "🌸",
+    category: "download",
     filename: __filename
-}, async (conn, mek, m, { reply, from }) => {
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        const pushname = m.pushName || "User"; // Nom de l'utilisateur ou valeur par défaut
-        const currentTime = moment().format("HH:mm:ss");
-        const currentDate = moment().format("dddd, MMMM Do YYYY");
-
-        const runtimeMilliseconds = Date.now() - botStartTime;
-        const runtimeSeconds = Math.floor((runtimeMilliseconds / 1000) % 60);
-        const runtimeMinutes = Math.floor((runtimeMilliseconds / (1000 * 60)) % 60);
-        const runtimeHours = Math.floor(runtimeMilliseconds / (1000 * 60 * 60));
-
-        const formattedInfo = `
-🌟 *ALI MD STATUS* 🌟
-Hey 👋🏻 ${pushname}
-🕒 *Time*: ${currentTime}
-📅 *Date*: ${currentDate}
-⏳ *Uptime*: ${runtimeHours} hours, ${runtimeMinutes} minutes, ${runtimeSeconds} seconds
-
-*🤖sᴛᴀᴛᴜs*: *ᴀʟɪ-ᴍᴅ ᴀʟɪᴠᴇ ᴀɴᴅ ʀᴇᴀᴅʏ*
-
-*🤍ᴍᴀᴅᴇ ᴡɪᴛʜ ʟᴏᴠᴇ*
-        `.trim();
-
-        // Vérifier si l'image est définie
-        if (!ALIVE_IMG || !ALIVE_IMG.startsWith("http")) {
-            throw new Error("Invalid ALIVE_IMG URL. Please set a valid image URL.");
-        }
-
-        // Envoyer le message avec image et légende
-        await conn.sendMessage(from, {
-            image: { url: ALIVE_IMG }, // Assurez-vous que l'URL est valide
-            caption: formattedInfo,
-            contextInfo: { 
-                mentionedJid: [m.sender],
-                forwardingScore: 999,
+let cap = `
+╭──❍ *${config.BOT_NAME}* ❍─┉┈◊
+│ ✨ *𝐇𝐄𝐋𝐋𝐎!* 👋
+│ 🏷️ *𝐁𝐎𝐓-𝐔𝐒𝐄𝐑 :* ${m.pushName || 'No Name'}*
+┗─┬────❍
+╭─┴❍ 🧃 𝐁𝐎𝐓 𝐒𝐘𝐒𝐓𝐄𝐌* ❍─┉┈◊
+│ *⏳️𝐔𝐏𝐓𝐈𝐌𝐄* : *${runtime(process.uptime())}*
+│ *📟𝐑𝐀𝐌-𝐔𝐒𝐀𝐆𝐄* : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}𝐌𝐁 / ${Math.round(require('os').totalmem / 1024 / 1024)}𝐌𝐁*
+│ *🍁𝐇𝐎𝐒𝐓-𝐍𝐀𝐌𝐄* : *${os.hostname()}*
+┗─────┉───────┉──┈⊷
+`;
+await conn.sendMessage(from, { 
+                        audio: { url: `https://files.catbox.moe/6kvcfg.mp4` }, 
+                        mimetype: "audio/mpeg" ,
+                        ptt: "true" ,
+                        contextInfo: {
+                            externalAdReply: {
+                                title: config.BOT_NAME || "ALI-MD",
+                                body: "ᴘσωєʀє∂ ву αℓι м∂⎯꯭̽🐍",
+                                mediaType: 1,
+                                sourceUrl: "https://wa.me/message/TAMAX6V3VD2RG1",
+                                thumbnailUrl: "https://files.catbox.moe/33hd05.jpg", // This should match the image URL provided above
+                                renderLargerThumbnail: true,
+                                showAdAttribution: true
+                            }
+                        }
+                    
+                    }, { quoted: mek });
+await conn.sendMessage(from, {
+            image: { url: `https://files.catbox.moe/33hd05.jpg`}, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
+            caption: cap,
+         contextInfo: {
+                mentionedJid: ['923003588997@s.whatsapp.net'], // specify mentioned JID(s) if any
+                groupMentions: [],
+                forwardingScore: 1,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363318387454868@newsletter',
-                    newsletterName: '𝐀ɭι̇ι̇ 𝐌Ɗ 🍁',
-                    serverMessageId: 143
+                    newsletterName: "𝐀ɭīī 𝐌Ɗ 𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀🚩",
+                    serverMessageId: 999
+                },
+                externalAdReply: {
+                    title: config.BOT_NAME || "ALI-MD",
+                    body: 'ᴘσωєʀє∂ ву αℓι м∂⎯꯭̽🐍',
+                    mediaType: 1,
+                    sourceUrl: "https://wa.me/message/TAMAX6V3VD2RG1",
+                    thumbnailUrl: 'https://files.catbox.moe/33hd05.jpg', // This should match the image URL provided above
+                    renderLargerThumbnail: true,
+                    showAdAttribution: true
                 }
             }
-        }, { quoted: mek });
-
-    } catch (error) {
-        console.error("Error in alive command: ", error);
-        
-        // Répondre avec des détails de l'erreur
-        const errorMessage = `
-❌ An error occurred while processing the alive command.
-🛠 *Error Details*:
-${error.message}
-
-Please report this issue or try again later.
-        `.trim();
-        return reply(errorMessage);
+     }, {quoted: mek});
+     
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
     }
 });
-          
