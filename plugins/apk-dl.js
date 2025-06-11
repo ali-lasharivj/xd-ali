@@ -48,7 +48,7 @@ cmd({
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363318387454868@newsletter',
-          newsletterName: config.BOT_NAME,
+          newsletterName: '𝐀ɭīī 𝐌Ɗ 𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀🚩',
           serverMessageId: 143
         }
       }
@@ -79,7 +79,7 @@ cmd({
         isForwarded: false,
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363318387454868@newsletter',
-          newsletterName: config.BOT_NAME,
+          newsletterName: '𝐀ɭīī 𝐌Ɗ 𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀🚩',
           serverMessageId: 143
         }
       }
