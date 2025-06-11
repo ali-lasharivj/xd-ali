@@ -13,7 +13,7 @@ const yts = require('yt-search');
 
 
 cmd({
-  pattern: "play",
+  pattern: "pla",
   react: "🎶",
   desc: "Download YouTube song",
   category: "download",
