@@ -9,16 +9,14 @@ cmd({
     filename: __filename
 },
 async (conn, mek, m, {
-    from, q, isGroup, isBotAdmins, reply, groupMetadata, senderNumber
+    from, q, isGroup, isBotAdmins, ,isCreator ,reply, groupMetadata, senderNumber
 }) => {
     // Check if the command is used in a group
     if (!isGroup) return reply("❌ This command can only be used in groups.");
 
     // Get the bot owner's number dynamically from conn.user.id
-    const isCreator = conn.user.id.split(":")[0];
-    if (senderNumber !== isCreator) {
-        return reply("*📛 σɴℓу тнє σωɴɴɴєʀ ¢αɴ υѕє тнιѕ ¢σммαɴ∂!*");
-    }
+    
+    if (!isCreator) return reply("*📛 ᴏɴʟʏ ᴛʜᴇ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ!*");
 
     // Check if the bot is an admin
     if (!isBotAdmins) return reply("*📛 ɪ ɴᴇᴇᴅ ᴛᴏ ʙᴇ ᴀɴ ᴀᴅᴍɪɴ ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ*");
