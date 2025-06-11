@@ -41,7 +41,7 @@ cmd({
     // Send a message with the app thumbnail and "Downloading..." text
     await conn.sendMessage(from, {
       image: { url: icon }, // App icon as thumbnail
-      caption: `*『𝐀𝐋𝐈-𝐌𝐃 𝐀𝐏𝐊 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃』*\n\n*╭──────────────────✑*\n‎*┋* *⬡ 🔖 *ɴαмє*: ${name}\n*┋* *⬡ 📅 *ℓαѕт υρ∂αтє∂*: ${lastup}\n*┋* *⬡ 📦 *ρα¢кαgє*: ${package}\n‎*┋* *⬡ 📏 *ѕιzє*: ${size}\n‎*╰──────────────────✑*\n\n> *⏳ ρℓєαѕє ωαιт α мσмєɴт ωнιℓє уσυʀ αρк ιѕ вєιɴg ѕєит...*`,
+      caption: `*『𝐀𝐋𝐈-𝐌𝐃 𝐀𝐏𝐊 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃』*\n\n*╭──────────────────✑*\n‎*┋* 🔖 ɴαмє: ${name}*\n*┋ 📅 ℓαѕт υρ∂αтє∂: ${lastup}*\n*┋ 📦 ρα¢кαgє: ${package}*\n‎*┋ 📏 ѕιzє: ${size}*\n‎*╰──────────────────✑*\n\n> *⏳ ρℓєαѕє ωαιт α мσмєɴт ωнιℓє уσυʀ αρк ιѕ вєιɴg ѕєит...*`,
       contextInfo: {
         mentionedJid: [m.sender],
         forwardingScore: 999,
