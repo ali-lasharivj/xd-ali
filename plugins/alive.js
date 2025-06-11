@@ -40,6 +40,30 @@ await conn.sendMessage(from, {
                         }
                     
                     }, { quoted: mek });
+        await conn.sendMessage(from, {
+            image: { url: `https://files.catbox.moe/33hd05.jpg`}, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
+            caption: cap,
+         contextInfo: {
+                mentionedJid: ['923003588997@s.whatsapp.net'], // specify mentioned JID(s) if any
+                groupMentions: [],
+                forwardingScore: 1,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363318387454868@newsletter',
+                    newsletterName: "𝐀ɭīī 𝐌Ɗ 𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀🚩",
+                    serverMessageId: 999
+                },
+                externalAdReply: {
+                    title: config.BOT_NAME || "ALI-MD",
+                    body: 'ᴘσωєʀє∂ ву αℓι м∂⎯꯭̽🐍',
+                    mediaType: 1,
+                    sourceUrl: "https://wa.me/message/TAMAX6V3VD2RG1",
+                    thumbnailUrl: 'https://files.catbox.moe/33hd05.jpg', // This should match the image URL provided above
+                    renderLargerThumbnail: false,
+                    showAdAttribution: false 
+                }
+            }
+     }, {quoted: mek});
 
      
     } catch (e) {
