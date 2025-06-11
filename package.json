@@ -9,7 +9,7 @@
     "restart": "pm2 restart ALI-MD"
   },
   "dependencies": {
-    "@whiskeysockets/baileys":"github:Drayyyxd/XD-Baileys",
+    "@whiskeysockets/baileys": "latest",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@dark-yasiya/yt-dl.js": "1.0.5",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -20,7 +20,7 @@
     "util": "^0.12.4",
     "express": "latest",
     "moment-timezone": "^0.5.45",
-    "axios": "^1.2.5",
+    "axios": "^1.7.9",
     "better-sqlite3": "*",
     "buffer": "^6.0.3",
     "canvacord": "^5.4.9",
