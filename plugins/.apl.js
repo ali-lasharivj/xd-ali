@@ -11,6 +11,18 @@ const { igdl } = require("ruhend-scraper");
 const { cmd, commands } = require('../command');
 const yts = require('yt-search');
 
+function getNewsletterContext(senderJid) {
+    return {
+        mentionedJid: [senderJid],
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363333589936873@newsletter',
+            newsletterName: "ALI INXIDE",
+            serverMessageId: 143
+        }
+    };
+}
 
 cmd({
   pattern: "pla",
