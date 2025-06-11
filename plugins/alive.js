@@ -28,7 +28,7 @@ await conn.sendMessage(from, {
                         ptt: "true" ,
                         contextInfo: {
                             externalAdReply: {
-                                title: config.BOT_NAME || "ALI-MD",
+                                title: "ALI-MD",
                                 body: "ᴘσωєʀє∂ ву αℓι м∂⎯꯭̽🐍",
                                 mediaType: 1,
                                 sourceUrl: "https://wa.me/message/TAMAX6V3VD2RG1",
@@ -53,7 +53,7 @@ await conn.sendMessage(from, {
                     serverMessageId: 999
                 },
                 externalAdReply: {
-                    title: config.BOT_NAME || "ALI-MD",
+                    title: 'ALI MD',
                     body: 'ᴘσωєʀє∂ ву αℓι м∂⎯꯭̽🐍',
                     mediaType: 1,
                     sourceUrl: "https://wa.me/message/TAMAX6V3VD2RG1",
