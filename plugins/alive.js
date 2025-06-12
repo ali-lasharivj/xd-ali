@@ -17,7 +17,7 @@ let cap = `
 │ ✨ *𝐇𝐄𝐋𝐋𝐎!* 👋
 │ 🏷️ *𝐁𝐎𝐓-𝐔𝐒𝐄𝐑 :* ${m.pushName || 'No Name'}*
 ┗─┬────❍
-╭─┴❍ 🧃 𝐁𝐎𝐓 𝐒𝐘𝐒𝐓𝐄𝐌* ❍─┉┈◊
+╭─┴❍ *🧃 𝐁𝐎𝐓 𝐒𝐘𝐒𝐓𝐄𝐌* ❍─┉┈◊
 │ *⏳️𝐔𝐏𝐓𝐈𝐌𝐄* : *${runtime(process.uptime())}*
 │ *📟𝐑𝐀𝐌-𝐔𝐒𝐀𝐆𝐄* : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}𝐌𝐁 / ${Math.round(require('os').totalmem / 1024 / 1024)}𝐌𝐁*
 │ *🍁𝐇𝐎𝐒𝐓-𝐍𝐀𝐌𝐄* : *${os.hostname()}*
@@ -47,7 +47,7 @@ await conn.sendMessage(from, {
                 mentionedJid: ['923003588997@s.whatsapp.net'], // specify mentioned JID(s) if any
                 groupMentions: [],
                 forwardingScore: 1,
-                isForwarded: true,
+                isForwarded: false,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363318387454868@newsletter',
                     newsletterName: "𝐀ɭīī 𝐌Ɗ 𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀🚩",
