@@ -1,6 +1,79 @@
+const axios = require("axios");
+const { cmd } = require("../command");
 
+cmd({
+  pattern: "fancy",
+  alias: ["font", "style"],
+  react: "✍️",
+  desc: "Convert text into various fancy fonts.",
+  category: "tools",
+  filename: __filename
+}, async (conn, mek, m, {
+  from,
+  quoted,
+  body,
+  isCmd,
+  command,
+  args,
+  q,
+  reply
+}) => {
+  try {
+    if (!q) return reply("*🎐 ρℓєαѕє ρʀσνι∂є тєχт єχαмρℓє: .fαɴ¢у нєℓℓσ*)");
 
+    const apiUrl = `https://www.dark-yasiya-api.site/other/font?text=${encodeURIComponent(q)}`;
+    const res = await axios.get(apiUrl);
 
+    if (!res.data.status || !Array.isArray(res.data.result)) {
+      return reply("❌ Error fetching fonts. Try again later.");
+    }
 
+    const fonts = res.data.result;
+    const maxDisplay = 44;
+    const displayList = fonts.slice(0, maxDisplay);
 
-const { cmd } = require('../command'); const axios = require('axios'); cmd({ pattern: "fancy", alias: ['font', "style"], react: '♻️', desc: "Convert text into various fonts.", category: "tools", filename: __filename }, async (conn, mek, m, { from, quoted, body, args, q, reply }) => { try { if (!q) return reply("Please provide text to convert into fonts. Eg .fancy Carmen"); let response = await axios.get('https://www.dark-yasiya-api.site/other/font?text=' + encodeURIComponent(q)); let data = response.data; if (!data.status) return reply("Error fetching fonts. Please try again later."); let fontResults = data.result.map(font => '*' + font.name + ":*\n" + font.result).join("\n\n"); let message = `*ALI FANCY FONTS*:\n\n${fontResults}\n\n> *BY ALI_MD-V1*`; await conn.sendMessage(from, { text: message, contextInfo: { mentionedJid: [m.sender], forwardingScore: 999, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363318387454868@newsletter', newsletterName: '𝐀ɭι̇ι̇ 𝐌Ɗ 🍁', serverMessageId: 143 } } }, { quoted: mek }); } catch (error) { console.error(error); reply("An error occurred while fetching fonts."); } });
+    let menuText = "╭──〔 *FANCY STYLES* 〕──⬣\n";
+    displayList.forEach((f, i) => {
+      menuText += `┋ ${i + 1}. ${f.result}\n`;
+    });
+    menuText += "╰───────────────⬣\n\n📌 *ʀєρℓу ωιтн тнє ɴυмвєʀ тσ ѕєℓє¢т α fσɴт ѕтуℓє fσʀ:*\n> *© ᴘσωєʀє∂ ву αℓι м∂⎯꯭̽🐍*";
+
+    const sentMsg = await conn.sendMessage(from, {
+      text: menuText
+    }, { quoted: m });
+
+    const messageID = sentMsg.key.id;
+
+    const messageHandler = async (msgData) => {
+      const receivedMsg = msgData.messages?.[0];
+      if (!receivedMsg || !receivedMsg.message) return;
+
+      const receivedText = receivedMsg.message.conversation ||
+        receivedMsg.message.extendedTextMessage?.text;
+
+      const senderID = receivedMsg.key.remoteJid;
+      const isReplyToBot = receivedMsg.message.extendedTextMessage?.contextInfo?.stanzaId === messageID;
+
+      if (isReplyToBot && senderID === from) {
+        const selectedNumber = parseInt(receivedText.trim());
+        if (isNaN(selectedNumber) || selectedNumber < 1 || selectedNumber > displayList.length) {
+          return conn.sendMessage(from, {
+            text: "❎ Invalid selection. Please reply with a number from 1 to " + displayList.length + ".",
+          }, { quoted: receivedMsg });
+        }
+
+        const chosen = displayList[selectedNumber - 1];
+        const finalText = `${chosen.result}`;
+
+        await conn.sendMessage(from, {
+          text: finalText
+        }, { quoted: receivedMsg });
+      }
+    };
+
+    conn.ev.on("messages.upsert", messageHandler);
+  } catch (error) {
+    console.error("❌ Error in .fancy:", error);
+    reply("⚠️ An error occurred while processing.");
+  }
+});
