@@ -51,16 +51,7 @@ await conn.sendMessage(from, {
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363318387454868@newsletter',
                     newsletterName: "𝐀ɭīī 𝐌Ɗ 𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀🚩",
-                    serverMessageId: 999
-                },
-                externalAdReply: {
-                    title: config.BOT_NAME || "ALI-MD",
-                    body: 'ᴘσωєʀє∂ ву αℓι м∂⎯꯭̽🐍',
-                    mediaType: 1,
-                    sourceUrl: "https://wa.me/message/TAMAX6V3VD2RG1",
-                    thumbnailUrl: 'https://files.catbox.moe/33hd05.jpg', // This should match the image URL provided above
-                    renderLargerThumbnail: false,
-                    showAdAttribution: false 
+                    serverMessageId: 999 
                 }
             }
      }, {quoted: mek});
