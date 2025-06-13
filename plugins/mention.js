@@ -22,7 +22,7 @@ cmd({
     ];
 
     const randomClip = voiceClips[Math.floor(Math.random() * voiceClips.length)];
-    const botNumber = conn.user.id.split(":")[0] + '@s.whatsapp.net','923003588997@s.whatsapp.net';
+    const botNumber = conn.user.id.split(":")[0] + '@s.whatsapp.net';
 
     if (m.mentionedJid.includes(botNumber)) {
       const thumbnailRes = await axios.get(config.ALIVE_IMG || "https://files.catbox.moe/vgrxe0.jpg", {
@@ -53,7 +53,7 @@ cmd({
     }
   } catch (e) {
     console.error(e);
-    const ownerJid = conn.user.id.split(":")[0] + "@s.whatsapp.net","923003588997@s.whatsapp.net";
+    const ownerJid = conn.user.id.split(":")[0] + "@s.whatsapp.net";
     await conn.sendMessage(ownerJid, {
       text: `*Bot Error in Mention Handler:*\n${e.message}`
     });
