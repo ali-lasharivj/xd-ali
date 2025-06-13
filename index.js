@@ -473,9 +473,10 @@ if (!isReact && config.AUTO_REACT === 'true') {
         '✅', '🔰', '〽️', '🌐', '🌀', '⤴️', '⤵️', '🔴', '🟢', '🟡', '🟠', '🔵', '🟣', '⚫', 
         '⚪', '🟤', '🔇', '🔊', '📢', '🔕', '♥️', '🕐', '🚩', '🇵🇰', '🧳', '🌉', '🌁', '🛤️', '🛣️', '🏚️', '🏠', '🏡', '🧀', '🍥', '🍮', '🍰', '🍦', '🍨', '🍧', '🥠', '🍡', '🧂', '🍯', '🍪', '🍩', '🍭', '🥮', '🍡'
     ];
-    const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
-    m.react(randomReaction);
-}
+    const randomOwnerReaction = reactions[Math.floor(Math.random() * reactions.length)]; // 
+          m.react(randomOwnerReaction);
+      }
+  }
 // custum react settings        
 const bannedUsers = JSON.parse(fs.readFileSync('./lib/ban.json', 'utf-8'));
 const isBanned = bannedUsers.includes(sender);
