@@ -87,7 +87,7 @@ const port = process.env.PORT || 9090;
   //=============================================
   
   async function connectToWA() {
-  console.log("Connecting to WhatsApp ⏳️...");
+  console.log("CONNECTING TO WHATSAPP ⏳️...");
   const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/sessions/')
   var { version } = await fetchLatestBaileysVersion()
   
@@ -107,15 +107,15 @@ const port = process.env.PORT || 9090;
   connectToWA()
   }
   } else if (connection === 'open') {
-  console.log('🧬 Installing Plugins')
+  console.log('🧬 INSTALLING PLUGINS')
   const path = require('path');
   fs.readdirSync("./plugins/").forEach((plugin) => {
   if (path.extname(plugin).toLowerCase() == ".js") {
   require("./plugins/" + plugin);
   }
   });
-  console.log('Plugins installed successful ✅')
-  console.log('Bot connected to whatsapp ✅')
+  console.log('PLUGINS INSTALLED SUCCESSFUL ✅')
+  console.log('BOT CONNECTED TO WHATSAPP ✅')
   
   let up = `*𝐇𝐄𝐋𝐋𝐎 𝐓𝐇𝐄𝐑𝐄 𝐀𝐋𝐈-𝐌𝐃 𝐁𝐎𝐓👑*
 *𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋𝐋𝐘!*
@@ -158,49 +158,7 @@ conn.ev.on('call', async (calls) => {
   } catch (err) {
     console.error("Anti-call error:", err);
   }
-});
-///  ============
-	  conn.ev.on('messages.delete', async (message) => {
-    if (config.ANTI_DELETE === "true" && message.remoteJid.endsWith('@g.us')) {
-        try {
-            const deletedMessage = await conn.loadMessage(message.remoteJid, message.id)
-            if (deletedMessage) {
-                const deletedContent = deletedMessage.message
-
-                let notificationText = `🚨 Deleted Message Detected 🚨\n\n`
-                notificationText += `From: ${deletedMessage.pushName} (@${deletedMessage.participant.split('@')[0]})\n`
-
-                if (deletedContent) {
-                    if (deletedContent.conversation) {
-                        notificationText += `Message: ${deletedContent.conversation}`
-                    } else if (deletedContent.extendedTextMessage) {
-                        notificationText += `Message: ${deletedContent.extendedTextMessage.text}`
-                    } else if (deletedContent.imageMessage) {
-                        notificationText += `Message: [Image with caption: ${deletedContent.imageMessage.caption}]`
-                    } else if (deletedContent.videoMessage) {
-                        notificationText += `Message: [Video with caption: ${deletedContent.videoMessage.caption}]`
-                    } else {
-                        notificationText += `Message: [${Object.keys(deletedContent)[0]} message]`
-                    }
-                } else {
-                    notificationText += `Message: [Unable to retrieve deleted content]`
-                }
-
-                // Send notification to the chat where the message was deleted
-                await conn.sendMessage(message.remoteJid, { text: notificationText })
-
-                // If it's an image or video, send the media as well
-                if (deletedContent && (deletedContent.imageMessage || deletedContent.videoMessage)) {
-                    const media = await downloadMediaMessage(deletedMessage, 'buffer')
-                    await conn.sendMessage(message.remoteJid, { image: media, caption: 'Deleted media' })
-                }
-            }
-        } catch (error) {
-            console.error('Error handling deleted message:', error)
-        }
-    }
-});
-	
+});	
   //==============================
 
   conn.ev.on('messages.update', async updates => {
@@ -250,7 +208,7 @@ conn.ev.on('call', async (calls) => {
         break;
       default:
         return await client.sendMessage(message.chat, {
-          text: "❌ Only image, video, and audio messages are supported"
+         // text: "❌ Only image, video, and audio messages are supported"
         }, { quoted: message });
     }
 
