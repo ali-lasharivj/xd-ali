@@ -295,7 +295,11 @@ if (!isReact && config.AUTO_REACT === 'true') {
 }
           
 // custum react settings        
-                        
+const bannedUsers = JSON.parse(fs.readFileSync('./lib/ban.json', 'utf-8'));
+const isBanned = bannedUsers.includes(sender);
+
+if (isBanned) return; // Ignore banned users completely
+	                                                  
 // Custom React for all messages (public and owner)
 if (!isReact && config.CUSTOM_REACT === 'true') {
     // Use custom emojis from the configuration (fallback to default if not set)
@@ -303,11 +307,21 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
     const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
     m.react(randomReaction);
 }
-        
+
+
+const ownerFile = JSON.parse(fs.readFileSync('./lib/owner.json', 'utf-8'));  // خواندن فایل
+  const ownerNumberFormatted = `${config.OWNER_NUMBER}@s.whatsapp.net`;
+  // بررسی اینکه آیا فرستنده در owner.json موجود است
+  const isFileOwner = ownerFile.includes(sender);
+  const isRealOwner = sender === ownerNumberFormatted || isMe || isFileOwner;
   //==========WORKTYPE============ 
-  if(!isOwner && config.MODE === "private") return
-  if(!isOwner && isGroup && config.MODE === "inbox") return
-  if(!isOwner && !isGroup && config.MODE === "groups") return
+  if(!isRealOwner && config.MODE === "private") return
+  if(!isRealOwner && isGroup && config.MODE === "inbox") return
+  if(!isRealOwner && !isGroup && config.MODE === "groups") return	  
+  //==========WORKTYPE============ 
+//  if(!isOwner && config.MODE === "private") return
+//  if(!isOwner && isGroup && config.MODE === "inbox") return
+//  if(!isOwner && !isGroup && config.MODE === "groups") return
    
   // take commands 
                  
